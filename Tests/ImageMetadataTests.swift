@@ -28,7 +28,7 @@ class ImageMetadataTests: XCTestCase {
   func testInitNoFile() {
     let noFileURL = URL(string: "https://www.trafina.ch")!
     let noImageMetadata = ImageMetadata(for: noFileURL)
-    XCTAssertNil(noImageMetadata)
+    XCTAssertNil(noImageMetadata.properties)
   }
 
   func testDumpDebugProperties() {

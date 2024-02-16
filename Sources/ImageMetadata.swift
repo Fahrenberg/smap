@@ -9,8 +9,9 @@ import Foundation
 import ImageIO
 
 // edited in iVim
+typealias Metadata = [CFString: Any]
 struct ImageMetadata {
-    private(set) var properties: [CFString: Any]?
+    private(set) var properties: Metadata? = nil 
     private var fileName: String
 
     init(for imageURL: URL) {
@@ -46,7 +47,7 @@ struct ImageMetadata {
 // use exiftool -a -G1 -s -n -ee '-gps*' xxx.jpg to check gps data
     func longitude() -> Double? {
        guard let properties = self.properties,
-            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as [CFString: Any]?,
+            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? [CFString: Any],
             let gpsLongitude = gpsProperties[kCGImagePropertyGPSLongitude], 
             let longitude =  gpsLongitude  as? Double
  
@@ -61,7 +62,7 @@ struct ImageMetadata {
 
     func latitude() -> Double? {
       guard let properties = self.properties,
-            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as! [CFString: Any]?,
+            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? [CFString: Any],
             let gpsLatitude = gpsProperties[kCGImagePropertyGPSLatitude], 
             let latitude =  gpsLatitude  as? Double
  

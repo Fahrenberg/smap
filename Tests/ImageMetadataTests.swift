@@ -46,6 +46,7 @@ class ImageMetadataTests: XCTestCase {
     let latitude = imageMetadata.latitude()
     XCTAssertNotNil(latitude)
     XCTAssertEqual(latitude!, 46.6239383333333, accuracy: 0.0000001)
+    print("Longitude \(longitude!), latitude \(latitude!)")
 /*
 testImage.jpg exiftool use exiftool -a -G1 -s -n -ee '-gps*' xxx.jpg 
 [GPS]           GPSVersionID                    : 2 2 0 0

@@ -10,7 +10,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "SMAP",
+            name: "smap",
             dependencies: [
                 .product(name:"ArgumentParser", package: "swift-argument-parser")
             ],
@@ -22,7 +22,7 @@ let package = Package(
         .testTarget(
           name: "SmapTests",
           dependencies: [
-            "SMAP"
+            "smap"
             ],
           resources: [
             .process("testImage.jpg")

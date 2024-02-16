@@ -3,7 +3,7 @@
 //
 
 import XCTest
-@testable import SMAP
+@testable import smap
 
 class ImageMetadataTests: XCTestCase {
 

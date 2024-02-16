@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SMAP",
+    name: "SmapApp",
     dependencies: [
         .package(url:"https://github.com/apple/swift-argument-parser", from: "1.0.0")
     ],

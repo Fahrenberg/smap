@@ -1,3 +1,3 @@
 - name: Setup Swift environment for macOS, Linux and Windows
-  uses: SwiftyLab/setup-swift@v1.5.1
+- uses: SwiftyLab/setup-swift@latest
             

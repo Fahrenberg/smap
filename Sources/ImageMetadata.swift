@@ -21,7 +21,7 @@ struct ImageMetadata {
             return
         }
 
-        guard let properties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as? [CFString: Any] else {
+        guard let properties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as? Metadata else {
             return
         }
 
@@ -47,7 +47,7 @@ struct ImageMetadata {
 // use exiftool -a -G1 -s -n -ee '-gps*' xxx.jpg to check gps data
     func longitude() -> Double? {
        guard let properties = self.properties,
-            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? [CFString: Any],
+            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? Metadata,
             let gpsLongitude = gpsProperties[kCGImagePropertyGPSLongitude], 
             let longitude =  gpsLongitude  as? Double
  
@@ -62,7 +62,7 @@ struct ImageMetadata {
 
     func latitude() -> Double? {
       guard let properties = self.properties,
-            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? [CFString: Any],
+            let gpsProperties = properties[kCGImagePropertyGPSDictionary] as? Metadata,
             let gpsLatitude = gpsProperties[kCGImagePropertyGPSLatitude], 
             let latitude =  gpsLatitude  as? Double
  

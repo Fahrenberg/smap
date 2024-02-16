@@ -20,7 +20,7 @@ let package = Package(
             ]
          ),
         .testTarget(
-          name: "SMAPTests",
+          name: "SmapTests",
           dependencies: [
             "SMAP"
             ],

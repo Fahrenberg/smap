@@ -8,7 +8,7 @@ import ArgumentParser
 import AppKit
 
 @main
-struct smap: ParsableCommand {
+struct Smap: ParsableCommand {
     
     @Flag(name: .shortAndLong, help: "Show Location as Swiss Topo Map in Browser")
     var browser = false

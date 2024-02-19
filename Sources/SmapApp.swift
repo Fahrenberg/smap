@@ -28,7 +28,7 @@ struct SmapApp: ParsableCommand {
         if browser {
           NSWorkspace.shared.open(mapLink)
         } else {
-          print(mapLink.absoluteString)
+          print("\"\(mapLink.absoluteString)\"")
         }
         
     }

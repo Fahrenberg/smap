@@ -1,6 +1,7 @@
 //
 //  smap
 //
+//  Adelboden coordinate: CLLocationCoordinate2D(latitude: 46.49619, longitude: 7.5638251),
 //
 
 import Foundation
@@ -8,7 +9,7 @@ import ArgumentParser
 import AppKit
 
 @main
-struct Smap: ParsableCommand {
+struct SmapApp: ParsableCommand {
     
     @Flag(name: .shortAndLong, help: "Show Location as Swiss Topo Map in Browser")
     var browser = false
@@ -20,8 +21,7 @@ struct Smap: ParsableCommand {
 
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
         
-        let imageData = try Data(contentsOf: imageFileURL)         
-        let location = Location.read(from: imageData)
+        let location = Location.read(contentsOf: imageFileURL)
         // let location = Location(latitude: 46.49619, longitude: 7.5638251)
         let mapLink = location.mapURL
     
@@ -40,5 +40,4 @@ struct Smap: ParsableCommand {
 
 
 /*
-ADELBODEN coordinate: CLLocationCoordinate2D(latitude: 46.49619, longitude: 7.5638251),
 */

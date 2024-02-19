@@ -16,7 +16,6 @@ let package = Package(
             ],
             exclude: [
                 "lochberg.jpg",
-                "smap.sh"
             ]
          ),
         .testTarget(

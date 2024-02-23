@@ -22,11 +22,12 @@ URL can be piped and is "" enclosed.
 
 ## Example in macOS Terminal:
 
-  smap "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" | xargs open
+ˋsmap "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" | xargs openˋ
 
   or 
-
-  smap -b "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" 
+ˋˋˋ
+smap -b "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" 
+ˋˋˋ
 
 ##
 (c) Jean-Nicolas Fahrenberg

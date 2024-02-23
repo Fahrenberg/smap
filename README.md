@@ -1,6 +1,11 @@
 #  SMAP - Swiss Topo Map URL Generator
 Command Line Tool to show image location on a SwissTopo Map.
 
+
+## Installation
+Use Swift Package Manager:
+
+
 ## Usage:
 
 smap [-b]  \<image-file-path\>
@@ -13,9 +18,17 @@ or opens the URL in the current browser.
 Flag -b indicates open in current browser.
 Default is printing URL.
 
-URL can be used to pipe and is "" enclosed.
-Example: "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333"
+URL can be piped and is "" enclosed.
 
+## Example in macOS Terminal:
+
+  smap "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" | xargs open
+
+  or 
+
+  smap -b "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" 
+
+##
 (c) Jean-Nicolas Fahrenberg
 
 www.fahrenberg.app

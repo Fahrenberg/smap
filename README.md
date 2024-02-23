@@ -20,7 +20,7 @@ Default is printing URL.
 
 URL can be piped and is "" enclosed.
 
-## Example in macOS Terminal:
+## Example for macOS Terminal:
 
 ```terminal
 smap "https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" | xargs openˋ

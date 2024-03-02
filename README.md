@@ -50,4 +50,4 @@ smap -b lochberg.jpg
 ##
 (c) Jean-Nicolas Fahrenberg
 
-[www.fahrenberg.app](www.fahrenberg.app)
+[www.fahrenberg.app](https://www.fahrenberg.app)

@@ -27,7 +27,6 @@ struct SmapApp: ParsableCommand {
 
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
         
-        print(imageFileURL)
 
         let location = Location.read(contentsOf: imageFileURL)
         // let location = Location(latitude: 46.49619, longitude: 7.5638251)

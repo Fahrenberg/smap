@@ -17,10 +17,18 @@ struct SmapApp: ParsableCommand {
     @Argument(help: "Image file path")
     var imageFilePath: String
     
+    func validate() throws {
+      if imageFilePath.isEmpty {
+        throw ValidationError("Image file path cannot be empty.")
+      }
+    }
+
     mutating func run() throws  {
 
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
         
+        print(imageFileURL)
+
         let location = Location.read(contentsOf: imageFileURL)
         // let location = Location(latitude: 46.49619, longitude: 7.5638251)
         let mapLink = location.mapURL

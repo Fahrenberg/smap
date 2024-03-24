@@ -1,12 +1,12 @@
 
-LOCATION=`echo "$@" | sed 's/,/ /'`
-for word in `echo "$LOCATION"`; do 
-  echo "$word"
+LOCATION=$(echo "$@" | sed 's/,/ /')
+set -- $LOCATION
+
+echo $1
+echo $2
+echo $0
+
+for i in $*; do
+  echo $i
 done
-
-LAT=`echo "$1"`
-
-echo $LOCATION
-echo $LAT
-echo $LONG
 echo "Done"

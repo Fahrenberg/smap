@@ -11,10 +11,10 @@ import AppKit
 @main
 struct SmapApp: ParsableCommand {
     
-    @Option(name: .short, help: "Show Location in Browser: swiss = Swiss Topo, osm = Open Street Map, placeholder = Placeholder Image")
+    @Option(name: .short, help: "Create Map-URL for: swiss = Swiss Topo, osm = Open Street Map, placeholder = Placeholder Image")
     var output: String = ""
 
-    @Flag(name: .shortAndLong, help: "Show Location as Swiss Topo Map in Browser")
+    @Flag(name: .shortAndLong, help: "Open Map-URL in Browser")
     var browser = false
     
     @Argument(help: "Image file path")

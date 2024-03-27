@@ -1,9 +1,12 @@
-// MapType - convert Location into a Map URL
+// MapType 
+// Convert Location into a MapType specific Map URL
 //
 //
 // Strategy Pattern to build URL based on MapType (= strategy)
-//
 // https://refactoring.guru/design-patterns/strategy
+//
+// Factory Pattern to build MapType from arguments String
+// https://refactoring.guru/design-patterns/factory-method
 //
 
 import Foundation
@@ -24,9 +27,26 @@ enum MapType {
     }
   }
 
-}
-extension MapType {
-   
+  static func create(from argument: String) -> MapType? {
+      switch argument {
+      case "swiss":
+        return MapType.swiss
+      case "osm":
+        return MapType.osm
+      case "placeholder":
+        return MapType.placeholder
+      default:
+        return nil
+      }
+  }
+
+  static func valid(argument: String) -> Bool {
+    if MapType.create(from: argument) != nil {
+      return true
+    } else {
+      return false
+    }
+  }
 }
 
 protocol Maps {

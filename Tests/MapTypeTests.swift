@@ -31,5 +31,31 @@ class MapTypeTests: XCTestCase {
     let cleanMapURL = mapURL.absoluteString.removingPercentEncoding!
     XCTAssertEqual(resultPlaceholderMap,cleanMapURL)
   }
+
+  func testMapTypeArguments() {
+    let empty = ""
+    XCTAssertNil(MapType.create(from: empty), 
+      "testMapTypeArguments: empty string failed"
+    ) 
+    let osm = "osm"
+    XCTAssertNotNil(MapType.create(from: osm),
+       "testMapTypeArguments: osm string failed"   
+    ) 
+    let swiss = "swiss"
+    XCTAssertNotNil(MapType.create(from: swiss), 
+       "testMapTypeArguments: swiss string failed"   
+    ) 
+
+    let placeholder = "placeholder"
+    XCTAssertNotNil(MapType.create(from: placeholder), 
+       "testMapTypeArguments: placeholder string failed"   
+    ) 
+ 
+    let wrong = "wrong"
+    XCTAssertNil(MapType.create(from: wrong)) 
+    
+  }
+
+
 }
 

@@ -21,17 +21,17 @@ struct SmapApp: ParsableCommand {
     var imageFilePath: String
     
     func validate() throws {
-      if !Arguments.validFilename(argument: imageFilePath) {
+      if imageFilePath.isEmpty {
         throw ValidationError("Image file path cannot be empty.")
       }
-      if !Arguments.validOutputArgument(argument: output)  {
+      if !(MapType.valid(argument: output) || output.isEmpty) {
          throw ValidationError("Wrong Output Option: use -o=swiss or -o=osm or -o=placeholder.") 
       }
     }
 
     mutating func run() throws  {
 
-        let mapType = Arguments.convertOutputArgument(argument: output)
+        let mapType = MapType.create(from: output) ?? MapType.swiss
 
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
         
@@ -45,11 +45,6 @@ struct SmapApp: ParsableCommand {
           print("\"\(mapLink.absoluteString)\"")
         }
         
-    }
-   
-
-    func validOutputOption(output: String) -> Bool {
-        return false 
     }
 }
 

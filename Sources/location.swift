@@ -1,5 +1,6 @@
 // Swiss Map Topo Location
-// Demo-URL: https://map.geo.admin.ch/?swisssearch=7.5638251,46.49619
+// Demo-URL: https://map.geo.admin.ch/?swisssearch=46.62393833333333,8.46906333333333
+
 // See Documentation: https://help.geo.admin.ch/?ids=54&lang=de
 
 import Foundation
@@ -14,13 +15,17 @@ struct Location {
   }
 
 
-  var mapURL: URL {
+  var swissMapURL: URL {
       var swissTopoComponent = URLComponents(url: Location.urlMapSwissTopo,
                                              resolvingAgainstBaseURL: false)
       let coordinateString = self.coordinateString
       swissTopoComponent?.queryItems = [URLQueryItem(name: "swisssearch", value: coordinateString)]
       return swissTopoComponent?.url ?? Location.urlPlaceholder!
    }
+
+  var osmMapURL: URL {
+      return Location.urlPlaceholder!
+  }
 
   var coordinateString: String {
     return "\(self.latitude),\(self.longitude)"

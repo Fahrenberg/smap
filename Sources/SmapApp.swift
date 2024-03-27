@@ -11,7 +11,7 @@ import AppKit
 @main
 struct SmapApp: ParsableCommand {
     
-    @Option(name: .short, help: "Show Location in Browser: swiss = Swiss Topo, osm = Open Street Map")
+    @Option(name: .short, help: "Show Location in Browser: swiss = Swiss Topo, osm = Open Street Map, placeholder = Placeholder Image")
     var output: String = ""
 
     @Flag(name: .shortAndLong, help: "Show Location as Swiss Topo Map in Browser")
@@ -21,23 +21,23 @@ struct SmapApp: ParsableCommand {
     var imageFilePath: String
     
     func validate() throws {
-      if !ArgumentsValidator.validFilename(argument: imageFilePath) {
+      if !Arguments.validFilename(argument: imageFilePath) {
         throw ValidationError("Image file path cannot be empty.")
       }
-      if !ArgumentsValidator.validOutputArgument(argument: output) {
-         throw ValidationError("Wrong Output Option: use -o=swiss or -o=osm.")      
+      if !Arguments.validOutputArgument(argument: output)  {
+         throw ValidationError("Wrong Output Option: use -o=swiss or -o=osm or -o=placeholder.") 
       }
     }
 
     mutating func run() throws  {
 
-        print("Option o = \(output)")
+        let mapType = Arguments.convertOutputArgument(argument: output)
+
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
         
 
         let location = Location.read(contentsOf: imageFileURL)
-        // let location = Location(latitude: 46.49619, longitude: 7.5638251)
-        let mapLink = location.mapURL
+        let mapLink = mapType.createMap(for: location).mapURL()
     
         if browser {
           NSWorkspace.shared.open(mapLink)

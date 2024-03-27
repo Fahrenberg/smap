@@ -1,10 +1,14 @@
 // Argments validator
 
-struct ArgumentsValidator {
+struct Arguments {
 
   static func validOutputArgument(argument: String) -> Bool {
       switch argument {
-      case "","osm","swiss":
+      case "", "swiss":
+        return true
+      case "osm":
+        return true
+      case "placeholder":
         return true
       default:
         return false
@@ -14,4 +18,17 @@ struct ArgumentsValidator {
     return !argument.isEmpty
 
   }
+  static func convertOutputArgument(argument: String) -> MapType {
+      switch argument {
+      case "swiss":
+        return MapType.swiss
+      case "osm":
+        return MapType.osm
+      case "placeholder":
+        return MapType.placeholder
+      default:
+        return MapType.swiss
+      }
+  }
+ 
 }

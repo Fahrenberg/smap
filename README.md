@@ -5,23 +5,33 @@ Command Line Tool to show image location on a SwissTopo Map.
 ## Installation
 Download source code, compile and run it with the Swift compiler:
 ```
-curl -LJO https://github.com/Fahrenberg/smap/archive/refs/tags/1.0.0.zip
-unzip smap-1.0.0.zip
-cd smap-1.0.0
+curl -LJO https://github.com/Fahrenberg/smap/archive/refs/tags/1.1.0.zip
+unzip smap-1.1.0.zip
+cd smap-1.1.0
 swift run smap Sources/lochberg.jpg
 ```
 
 ## Usage:
 
-smap [-b]  \<image-file-path\>
+smap [-o <o>] [--browser] <image-file-path>
+
+ARGUMENTS:
+  <image-file-path>       Image file path
+
+OPTIONS:
+  -o <o>                  Create Map-URL for: swiss = Swiss Topo, osm = Open Street Map, placeholder = Placeholder Image
+  -b, --browser           Open Map-URL in Browser
+  -h, --help              Show help information.
+
+
 
 Reads file from \<image-file-path\>
 and extracts GPS coordinates.
-Returns either URL string to open a Swiss Topo Map
-or opens the URL in the current browser.
+Returns either URL string for the selected map typo 
+or opens the location in the default browser
 
 Flag -b indicates open in current browser.
-Default is printing URL.
+Default is printing URL for Swiss Topo (-o=swiss).
 
 URL can be piped and is "" enclosed.
 
@@ -34,7 +44,7 @@ smap lochberg.jpg
 ```
 Result:
 ```
-"https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333" 
+"https://map.geo.admin.ch/?swisssearch=46.623938333333335,8.469063333333333"
 ```
 
 Opens file `lochberg.jpg` in the default browser (e.g. Safari):

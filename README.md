@@ -17,7 +17,7 @@ ARGUMENTS:
 
 OPTIONS:
 
-  -o \<o\> Map-URL with \<o\> :
+  -o \<o\> Map-URL for \<o\> :
   <br> swiss = Swiss Topo
   <br> osm = Open Street Map
   <br> placeholder = Placeholder Image

@@ -34,7 +34,7 @@ class MapTypeTests: XCTestCase {
 
   func testMapTypeArguments() {
     let empty = ""
-    XCTAssertNil(MapType.create(from: empty), 
+    XCTAssertNotNil(MapType.create(from: empty), 
       "testMapTypeArguments: empty string failed"
     ) 
     let osm = "osm"

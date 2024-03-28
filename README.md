@@ -13,24 +13,30 @@ swift run smap Sources/lochberg.jpg
 smap [-o <o>] [--browser] <image-file-path>
 
 ARGUMENTS:
-  <image-file-path>       Image file path
+  \<image-file-path\>
 
 OPTIONS:
-  -o <o>                  Create Map-URL for: swiss = Swiss Topo, osm = Open Street Map, placeholder = Placeholder Image
-  -b, --browser           Open Map-URL in Browser
-  -h, --help              Show help information.
 
+  -o \<o\> Map-URL with \<o\> :
+  <br> swiss = Swiss Topo
+  <br> osm = Open Street Map
+  <br> placeholder = Placeholder Image
 
+  -b, --browser Open Map-URL in Browser
+
+  -h, --help Show help information.
+
+---
 
 Reads file from \<image-file-path\>
 and extracts GPS coordinates.
 Returns either URL string for the selected map typo 
 or opens the location in the default browser
-
-Flag -b indicates open in current browser.
 Default is printing URL for Swiss Topo (-o=swiss).
 
-URL can be piped and is "" enclosed.
+URL can be piped and will be "" enclosed.
+
+---
 
 ## Example for macOS Terminal with lochberg.jpg:
 File [lochberg.jpg](https://github.com/Fahrenberg/smap/blob/43b726b9bc03bd5a3a54cf273c78af39ebc07f2c/Sources/lochberg.jpg) 

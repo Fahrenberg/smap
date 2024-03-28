@@ -3,11 +3,8 @@ Command Line Tool to show image location on a SwissTopo Map.
 
 
 ## Installation
-Download source code, compile and run it with the Swift compiler:
+Download source code from Github, compile and run it with the Swift compiler:
 ```
-curl -LJO https://github.com/Fahrenberg/smap/archive/refs/tags/1.1.0.zip
-unzip smap-1.1.0.zip
-cd smap-1.1.0
 swift run smap Sources/lochberg.jpg
 ```
 

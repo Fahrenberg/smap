@@ -13,12 +13,11 @@ class ImageMetadataTests: XCTestCase {
           XCTFail("Failed to locate testImage.jpg in test bundle.")
           fatalError("Failed to locate testImage.jpg in test bundle")
       }
-    print("Test-Image-URL: \(url.absoluteString)")
+    // print("Test-Image-URL: \(url.absoluteString)")
     return url
     }
 
   func testInitWithFile() {
-    print("TEST: ImageMetadata.swift")
     let imageMetadata = ImageMetadata(for: imageURL)
     XCTAssertNotNil(imageMetadata.properties)
 
@@ -35,6 +34,23 @@ class ImageMetadataTests: XCTestCase {
     let imageMetadata = ImageMetadata(for: imageURL)
     imageMetadata.debugDescription()
   }
+
+ /*
+
+Get coordinates to test with exiftool:
+
+testImage.jpg exiftool use exiftool -a -G1 -s -n -ee '-gps*' xxx.jpg 
+[GPS]           GPSVersionID                    : 2 2 0 0
+[GPS]           GPSLatitudeRef                  : N
+[GPS]           GPSLatitude                     : 46.6239383333333
+[GPS]           GPSLongitudeRef                 : E
+[GPS]           GPSLongitude                    : 8.46906333333333
+[GPS]           GPSAltitude                     : 2999.4602
+[Composite]     GPSLatitude                     : 46.6239383333333
+[Composite]     GPSLongitude                    : 8.46906333333333
+[Composite]     GPSPosition                     : 46.6239383333333 8.46906333333333
+
+*/
   
   func testCoordinateProperties() {
     let imageMetadata = ImageMetadata(for: imageURL)
@@ -46,18 +62,6 @@ class ImageMetadataTests: XCTestCase {
     let latitude = imageMetadata.latitude()
     XCTAssertNotNil(latitude)
     XCTAssertEqual(latitude!, 46.6239383333333, accuracy: 0.0000001)
-    print("Longitude \(longitude!), latitude \(latitude!)")
-/*
-testImage.jpg exiftool use exiftool -a -G1 -s -n -ee '-gps*' xxx.jpg 
-[GPS]           GPSVersionID                    : 2 2 0 0
-[GPS]           GPSLatitudeRef                  : N
-[GPS]           GPSLatitude                     : 46.6239383333333
-[GPS]           GPSLongitudeRef                 : E
-[GPS]           GPSLongitude                    : 8.46906333333333
-[GPS]           GPSAltitude                     : 2999.4602
-[Composite]     GPSLatitude                     : 46.6239383333333
-[Composite]     GPSLongitude                    : 8.46906333333333
-[Composite]     GPSPosition                     : 46.6239383333333 8.46906333333333
-*/
-  }
+    // print("Longitude \(longitude!), latitude \(latitude!)")
+ }
 }

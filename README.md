@@ -5,7 +5,11 @@ Command Line Tool to show image location on a SwissTopo Map.
 ## Installation
 Download source code from Github, compile and run it with the Swift compiler:
 ```
+
+git clone https://github.com/Fahrenberg/smap.git
+cd smap
 swift run smap Sources/lochberg.jpg
+
 ```
 
 ## Usage:
@@ -29,9 +33,10 @@ OPTIONS:
 ---
 
 Reads file from \<image-file-path\>
-and extracts GPS coordinates.
+and extracts GPS coordinates.<br>
 Returns either URL string for the selected map typo 
-or opens the location in the default browser
+or opens the location in the default browser.<br>
+<br>
 Default is printing URL for Swiss Topo (-o=swiss).
 
 URL can be piped and will be "" enclosed.

@@ -32,11 +32,33 @@ class MapTypeTests: XCTestCase {
     XCTAssertEqual(resultPlaceholderMap,cleanMapURL)
   }
 
-  func testMapTypeArguments() {
+  func testMapTypeArguments() throws {
+    let tests: [String : (argument: String, maptype: MapType)] = [
+      "empty": ("", MapType.swiss),
+      "osm":   ("osm", MapType.osm),
+      "swiss": ("swiss", MapType.swiss),
+      "placeholder": ("placeholder", MapType.placeholder)
+      ]
+    try tests.forEach { test in
+      let testName = test.key
+      let testArgument = test.value.argument
+      let testExpectedMapType = test.value.maptype
+      let resultMapType = MapType.create(from: testArgument)
+      XCTAssertNotNil(resultMapType,
+        "testMapTypeArguments: \(testName) argument \"\(testArgument) failed to return MapType \(testExpectedMapType)"
+      ) 
+      print(testName, "passed")
+      let unwrappedResultMapType = try XCTUnwrap(resultMapType)
+      XCTAssertEqual(unwrappedResultMapType,testExpectedMapType)
+    } 
+/*
     let empty = ""
-    XCTAssertNotNil(MapType.create(from: empty), 
+    let emptyMap = MapType.create(from: empty)
+    XCTAssertNotNil(emptyMap,
       "testMapTypeArguments: empty string failed"
     ) 
+    XCTAssertEqual(emptyMap!,MapType.swiss)
+
     let osm = "osm"
     XCTAssertNotNil(MapType.create(from: osm),
        "testMapTypeArguments: osm string failed"   
@@ -50,6 +72,7 @@ class MapTypeTests: XCTestCase {
     XCTAssertNotNil(MapType.create(from: placeholder), 
        "testMapTypeArguments: placeholder string failed"   
     ) 
+*/
  
     let wrong = "wrong"
     XCTAssertNil(MapType.create(from: wrong)) 

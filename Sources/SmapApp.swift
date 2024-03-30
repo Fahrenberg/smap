@@ -24,7 +24,7 @@ struct SmapApp: ParsableCommand {
       if imageFilePath.isEmpty {
         throw ValidationError("Image file path cannot be empty.")
       }
-      if !(MapType.valid(argument: output) || output.isEmpty) {
+      if !(MapType.valid(argument: output) ) {
          throw ValidationError("Wrong Output Option: use -o=swiss or -o=osm or -o=placeholder.") 
       }
     }

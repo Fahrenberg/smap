@@ -29,11 +29,11 @@ enum MapType {
 
   static func create(from argument: String) -> MapType? {
       switch argument {
-      case "", "swiss":
+      case "", "swiss","s":
         return MapType.swiss
-      case "osm":
+      case "osm","o":
         return MapType.osm
-      case "placeholder":
+      case "placeholder", "p":
         return MapType.placeholder
       default:
         return nil

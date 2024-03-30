@@ -14,17 +14,17 @@ swift run smap Sources/lochberg.jpg
 
 ## Usage:
 
-smap [-o <o>] [--browser] <image-file-path>
+smap [-o \<output\>] [-b] \<image-file-path\>
 
 ARGUMENTS:
   \<image-file-path\>
 
 OPTIONS:
 
-  -o \<o\> Map-URL for \<o\> :
-  <br> swiss = Swiss Topo
-  <br> osm = Open Street Map
-  <br> placeholder = Placeholder Image
+  -o \<output\> type of map URL for \<output\> :
+  <br> swiss | s = Swiss Topo
+  <br> osm | o = Open Street Map
+  <br> placeholder | p = Placeholder Image
 
   -b, --browser Open Map-URL in Browser
 
@@ -34,7 +34,7 @@ OPTIONS:
 
 Reads file from \<image-file-path\>
 and extracts GPS coordinates.<br>
-Returns either URL string for the selected map typo 
+Returns either URL string for the selected map type 
 or opens the location in the default browser.<br>
 <br>
 Default is printing URL for Swiss Topo (-o=swiss).

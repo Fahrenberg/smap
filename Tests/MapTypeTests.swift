@@ -33,47 +33,29 @@ class MapTypeTests: XCTestCase {
   }
 
   func testMapTypeArguments() throws {
-    let tests: [String : (argument: String, maptype: MapType)] = [
-      "empty": ("", MapType.swiss),
-      "osm":   ("osm", MapType.osm),
-      "swiss": ("swiss", MapType.swiss),
-      "placeholder": ("placeholder", MapType.placeholder)
+    let tests: [(argument: String, maptype: MapType)] = [
+      ("", MapType.swiss),
+      ("osm", MapType.osm),
+      ("o", MapType.osm),
+      ("swiss", MapType.swiss),
+      ("s", MapType.swiss),
+      ("placeholder", MapType.placeholder),
+      ("p", MapType.placeholder)
       ]
+    print("testMapTypeArguments Passed:", terminator: "")
     try tests.forEach { test in
-      let testName = test.key
-      let testArgument = test.value.argument
-      let testExpectedMapType = test.value.maptype
+      let testArgument = test.argument
+      let testExpectedMapType = test.maptype
       let resultMapType = MapType.create(from: testArgument)
       XCTAssertNotNil(resultMapType,
-        "testMapTypeArguments: \(testName) argument \"\(testArgument) failed to return MapType \(testExpectedMapType)"
+        "testMapTypeArguments: argument \"\(testArgument)\" failed to return MapType \(testExpectedMapType)"
       ) 
-      print(testName, "passed")
+      print("<", testArgument,">", separator: "", terminator: " ")
       let unwrappedResultMapType = try XCTUnwrap(resultMapType)
       XCTAssertEqual(unwrappedResultMapType,testExpectedMapType)
     } 
-/*
-    let empty = ""
-    let emptyMap = MapType.create(from: empty)
-    XCTAssertNotNil(emptyMap,
-      "testMapTypeArguments: empty string failed"
-    ) 
-    XCTAssertEqual(emptyMap!,MapType.swiss)
+    print("")
 
-    let osm = "osm"
-    XCTAssertNotNil(MapType.create(from: osm),
-       "testMapTypeArguments: osm string failed"   
-    ) 
-    let swiss = "swiss"
-    XCTAssertNotNil(MapType.create(from: swiss), 
-       "testMapTypeArguments: swiss string failed"   
-    ) 
-
-    let placeholder = "placeholder"
-    XCTAssertNotNil(MapType.create(from: placeholder), 
-       "testMapTypeArguments: placeholder string failed"   
-    ) 
-*/
- 
     let wrong = "wrong"
     XCTAssertNil(MapType.create(from: wrong)) 
     
